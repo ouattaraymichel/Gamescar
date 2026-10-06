@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Road Fury - Un jeu de voiture cartoon hypercasual. Tirez sur les voitures ennemies, récupérez des armes et des boucliers!">
+    <title>Road Fury 🏎️ - Jeu de Voiture</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-wrapper">
+        <canvas id="gameCanvas"></canvas>
+
+        <!-- MENU SCREEN -->
+        <div id="menu-screen" class="screen">
+            <div class="menu-content">
+                <div class="title-group">
+                    <h1 class="game-title">ROAD<br>FURY</h1>
+                    <p class="game-subtitle">🏎️ Tire & Explose! 🔥</p>
+                </div>
+                <button id="btn-play" class="btn-primary" onclick="game.start()">
+                    <span class="btn-icon">▶</span> JOUER
+                </button>
+                <div class="controls-hint">
+                    <div class="hint-row"><span class="key">←→</span> Déplacer</div>
+                    <div class="hint-row"><span class="key">ESPACE</span> Tirer</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAME OVER SCREEN -->
+        <div id="gameover-screen" class="screen hidden">
+            <div class="gameover-content">
+                <h2 class="gameover-title">GAME OVER</h2>
+                <div class="score-display">
+                    <div class="final-score-label">Score</div>
+                    <div id="final-score" class="final-score-value">0</div>
+                </div>
+                <div class="best-score-row">
+                    <span>🏆 Meilleur:</span>
+                    <span id="best-score">0</span>
+                </div>
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-kills">0</div>
+                        <div class="stat-label">Éliminés</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-pickups">0</div>
+                        <div class="stat-label">Objets</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-combo">0</div>
+                        <div class="stat-label">Max Combo</div>
+                    </div>
+                </div>
+                <button id="btn-retry" class="btn-primary" onclick="game.start()">
+                    <span class="btn-icon">↻</span> REJOUER
+                </button>
+            </div>
+        </div>
+
+        <!-- HUD -->
+        <div id="hud" class="hidden">
+            <div id="hud-top">
+                <div id="hud-score" class="hud-panel">
+                    <div class="hud-label">SCORE</div>
+                    <div id="hud-score-value" class="hud-value">0</div>
+                </div>
+                <div id="hud-combo" class="hud-panel hud-combo hidden">
+                    <span id="hud-combo-value">x2</span>
+                </div>
+            </div>
+            <div id="hud-bottom">
+                <div class="hud-item" id="hud-health-container">
+                    <span class="hud-item-icon">❤️</span>
+                    <div id="hud-health-bar" class="hud-bar">
+                        <div id="hud-health-fill" class="hud-bar-fill health-fill"></div>
+                    </div>
+                </div>
+                <div class="hud-item" id="hud-shield-container">
+                    <span class="hud-item-icon">🛡️</span>
+                    <div id="hud-shield-bar" class="hud-bar">
+                        <div id="hud-shield-fill" class="hud-bar-fill shield-fill"></div>
+                    </div>
+                </div>
+                <div class="hud-item">
+                    <span class="hud-item-icon">💥</span>
+                    <span id="hud-ammo" class="hud-item-value">30</span>
+                </div>
+                <div class="hud-item">
+                    <span class="hud-item-icon">⚡</span>
+                    <span id="hud-weapon" class="hud-item-value">Lv.1</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE CONTROLS -->
+        <div id="mobile-controls" class="hidden">
+            <button id="btn-left" class="mobile-btn mobile-btn-left">◀</button>
+            <button id="btn-fire" class="mobile-btn mobile-btn-fire">🔥</button>
+            <button id="btn-right" class="mobile-btn mobile-btn-right">▶</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
